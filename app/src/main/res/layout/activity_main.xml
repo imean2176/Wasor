@@ -4,62 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#404040"
     tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="10.0">
 
-        <AutoCompleteTextView
-            android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="@string/placeholder_search"
-            android:textAlignment="center"
-            android:textColor="@color/grey"
-            android:background="@drawable/round_search"
-            android:layout_weight="2.0"
-            >
-        </AutoCompleteTextView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="4.0"
+            android:layout_weight="1"
             >
-            <ImageButton
-                android:layout_width="wrap_content"
+            <AutoCompleteTextView
+                android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera"
+                android:text="@string/placeholder_search"
+                android:textAlignment="center"
+                android:textColor="@color/material_pink_accent_100"
+                android:background="@drawable/round_search"
                 >
-
-            </ImageButton>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phan_loai_rac">
-
-            </TextView>
+            </AutoCompleteTextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="4.0">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera"
+            android:layout_weight="4"
+            android:padding="@dimen/material_component_cards_top_and_bottom_padding"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button"
                 >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_camera"
+                        android:layout_gravity="center"
+                        android:background="@color/transparent_image"
+                        android:scaleType="fitCenter"
+                        >
+                    </ImageButton>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/material_light_white"
+                        android:textSize="@dimen/material_typography_title"
+                        android:text="@string/phan_loai_rac">
 
-            </ImageButton>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phan_loai_rac">
+                    </TextView>
+                </LinearLayout>
 
-            </TextView>
+            </LinearLayout>
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:padding="@dimen/material_component_cards_top_and_bottom_padding"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_hambeger"
+                        android:layout_gravity="center"
+                        android:background="@color/transparent_image"
+                        android:scaleType="fitCenter"
+                        >
+                    </ImageButton>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/material_light_white"
+                        android:textSize="@dimen/material_typography_title"
+                        android:text="@string/search_by_ten">
+
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

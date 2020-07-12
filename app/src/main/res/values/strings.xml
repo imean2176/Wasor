@@ -8,4 +8,5 @@
     <string name="third_description">Thực hiện việc phân loại rác. Trở thành người tốt chưa bao giờ dễ dàng đến thế.</string>
     <string name="placeholder_search">Nhập tên rác thải cần phân loại</string>
     <string name="phan_loai_rac">Phân loại rác bằng hình ảnh</string>
+    <string name="search_by_ten">Tìm kiếm theo tên</string>
 </resources>
