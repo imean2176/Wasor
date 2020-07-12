@@ -6,4 +6,6 @@
     <string name="first_description">Dễ dàng sử dụng, ứng dụng có thể phân loại các loại rác và đưa ra giải pháp xử lý cho từng loại rác</string>
     <string name="second_description">Phân loại rác tại nguồn giúp giảm thiểu ô nhiễm, bảo vệ môi trường, tiết kiệm chi phí thu gom, vận chuyển, xử lý </string>
     <string name="third_description">Thực hiện việc phân loại rác. Trở thành người tốt chưa bao giờ dễ dàng đến thế.</string>
+    <string name="placeholder_search">Nhập tên rác thải cần phân loại</string>
+    <string name="phan_loai_rac">Phân loại rác bằng hình ảnh</string>
 </resources>

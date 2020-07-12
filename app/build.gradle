@@ -29,4 +29,6 @@ dependencies {
 
     //Intro
     compile 'com.codemybrainsout.onboarding:onboarder:1.0.4'
+    //Dimention -- Khoảng cách giữa các layout
+    compile 'com.dmitrymalkovich.android:material-design-dimens:1.4'
 }
