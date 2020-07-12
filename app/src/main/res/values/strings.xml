@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Wasor</string>
+    <string name="first_title">Phân loại rác thải</string>
+    <string name="second_title">Bảo vệ môi trường</string>
+    <string name="third_title">Trở thành người tốt</string>
+    <string name="first_description">Dễ dàng sử dụng, ứng dụng có thể phân loại các loại rác và đưa ra giải pháp xử lý cho từng loại rác</string>
+    <string name="second_description">Phân loại rác tại nguồn giúp giảm thiểu ô nhiễm, bảo vệ môi trường, tiết kiệm chi phí thu gom, vận chuyển, xử lý </string>
+    <string name="third_description">Thực hiện việc phân loại rác. Trở thành người tốt chưa bao giờ dễ dàng đến thế.</string>
 </resources>
