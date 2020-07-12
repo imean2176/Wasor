@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+
 //Màn hình đầu tiên mà ứng dụng hiện lên
 //Ứng dụng sẽ kiểm tra xem người dùng đã xem Màn hình giới thiệu chưa,
 //Nếu có thì chuyển qua Màn hình giới thiệu (IntroActivity).
@@ -16,13 +18,21 @@ public class MainActivity extends AppCompatActivity {
     //Biến để lưu dữ liệu người dùng.
     SharedPreferences sharedPreferences;
 
+    //Tìm kiếm và sổ giá trị xuống
+    SearchableSpinner searchableSpinner;
+
     // onCreate sau đó mới đến onStart
     // Tạo màn hình trước (onCreate), rồi sau đó hiển thị màn hình đó (onStart)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sharedPreferences = this.getSharedPreferences("PREF", Context.MODE_PRIVATE);
+//        sharedPreferences = this.getSharedPreferences("PREF", Context.MODE_PRIVATE);
+//
+//
+//        searchableSpinner = findViewById(R.id.btnSearchSpinner);
+//        searchableSpinner.setTitle(String.valueOf(R.string.placeholder_search));
+//        searchableSpinner.setPositiveButton("OK");
     }
 
     @Override
