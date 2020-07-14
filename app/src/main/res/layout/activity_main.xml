@@ -21,19 +21,7 @@
             android:layout_weight="1"
             android:gravity="center"
             >
-            <AutoCompleteTextView
-                android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:text="@string/placeholder_search"
-                android:textAlignment="center"
-                android:textColor="@color/material_pink_accent_100"
-                android:background="@drawable/round_search"
-                android:textSize="@dimen/_13sdp"
-                >
-            </AutoCompleteTextView>
-<!--            <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
-<!--                android:id="@+id/btnSearchSpinner"-->
+<!--            <AutoCompleteTextView-->
 <!--                android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="@dimen/_40sdp"-->
@@ -41,8 +29,20 @@
 <!--                android:textAlignment="center"-->
 <!--                android:textColor="@color/material_pink_accent_100"-->
 <!--                android:background="@drawable/round_search"-->
-<!--                android:textSize="@dimen/_13sdp">-->
-<!--            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>-->
+<!--                android:textSize="@dimen/_13sdp"-->
+<!--                >-->
+<!--            </AutoCompleteTextView>-->
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:id="@+id/searchSpinner"
+                android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:text="@string/placeholder_search"
+                android:textAlignment="center"
+                android:textColor="@color/material_pink_accent_100"
+                android:background="@drawable/round_search"
+                android:textSize="@dimen/_13sdp">
+            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>
         </LinearLayout>
 
         <LinearLayout
