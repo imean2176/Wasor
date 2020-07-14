@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        sharedPreferences = this.getSharedPreferences("PREF", Context.MODE_PRIVATE);
-//
-//
+        sharedPreferences = this.getSharedPreferences("PREF", Context.MODE_PRIVATE);
+
+
 //        searchableSpinner = findViewById(R.id.btnSearchSpinner);
 //        searchableSpinner.setTitle(String.valueOf(R.string.placeholder_search));
 //        searchableSpinner.setPositiveButton("OK");

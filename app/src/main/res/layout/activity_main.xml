@@ -7,9 +7,11 @@
     android:background="#404040"
     tools:context=".MainActivity">
     <LinearLayout
+        android:layout_margin="@dimen/material_layout_keylines_screen_edge_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:weightSum="10.0">
 
         <LinearLayout
@@ -17,17 +19,30 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:layout_weight="1"
+            android:gravity="center"
             >
             <AutoCompleteTextView
                 android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:text="@string/placeholder_search"
                 android:textAlignment="center"
                 android:textColor="@color/material_pink_accent_100"
                 android:background="@drawable/round_search"
+                android:textSize="@dimen/_13sdp"
                 >
             </AutoCompleteTextView>
+<!--            <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+<!--                android:id="@+id/btnSearchSpinner"-->
+<!--                android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/_40sdp"-->
+<!--                android:text="@string/placeholder_search"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/material_pink_accent_100"-->
+<!--                android:background="@drawable/round_search"-->
+<!--                android:textSize="@dimen/_13sdp">-->
+<!--            </com.toptoche.searchablespinnerlibrary.SearchableSpinner>-->
         </LinearLayout>
 
         <LinearLayout
@@ -48,9 +63,9 @@
                     android:layout_gravity="center"
                     android:orientation="vertical">
                     <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_camera"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:src="@drawable/ic_linked_camera_black_24dp"
                         android:layout_gravity="center"
                         android:background="@color/transparent_image"
                         android:scaleType="fitCenter"
@@ -61,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/material_light_white"
-                        android:textSize="@dimen/material_typography_title"
+                        android:textSize="@dimen/material_typography_subheading"
                         android:text="@string/phan_loai_rac">
 
                     </TextView>
@@ -89,9 +104,9 @@
                     android:layout_gravity="center"
                     android:orientation="vertical">
                     <ImageButton
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_hambeger"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:src="@drawable/ic_dehaze_black_24dp"
                         android:layout_gravity="center"
                         android:background="@color/transparent_image"
                         android:scaleType="fitCenter"
@@ -102,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/material_light_white"
-                        android:textSize="@dimen/material_typography_title"
+                        android:textSize="@dimen/material_typography_subheading"
                         android:text="@string/search_by_ten">
 
                     </TextView>
