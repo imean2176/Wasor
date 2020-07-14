@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@android:id/text1"
+android:layout_width="match_parent"
+android:layout_height="@dimen/_40sdp"
+android:textAppearance="?android:attr/textAppearanceListItemSmall"
+android:gravity="center_vertical"
+android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+android:minHeight="?android:attr/listPreferredItemHeightSmall"
+android:text="@string/placeholder_search"
+android:textAlignment="center"
+android:textColor="@color/material_pink_accent_100"
+android:textSize="@dimen/_13sdp"
+android:layout_margin="@dimen/material_component_cards_top_and_bottom_padding"/>

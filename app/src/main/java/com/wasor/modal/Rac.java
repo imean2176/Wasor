@@ -9,6 +9,10 @@ public class Rac {
     public Rac() {
     }
 
+    public Rac(String tenrac) {
+        this.tenrac = tenrac;
+    }
+
     public Rac(String tenrac, String loairac, String motaloairac, String cachxuly) {
         this.tenrac = tenrac;
         this.loairac = loairac;

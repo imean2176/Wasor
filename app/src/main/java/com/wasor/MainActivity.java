@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         getDataFirebase();
 
         searchableSpinner = findViewById(R.id.searchSpinner);
-        searchableSpinner.setTitle(String.valueOf(R.string.placeholder_search));
+        searchableSpinner.setTitle("Nhập tên rác thải");
+
 
 
         //Cài đặt Khi chọn giá trị trong ô search thì sẽ xảy ra
@@ -139,13 +140,17 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
         //Lấy toàn bộ tên rác
         List<String> name_rac = new ArrayList<>();
+        String firstItem ="Nhập tên rác thải";
+        name_rac.add(firstItem);
+
         for(Rac rac: dsRac){
             name_rac.add(rac.getTenrac());
         }
 
         //Tạo adapter và cài đặt cho spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,name_rac);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.search_item,name_rac);
         searchableSpinner.setAdapter(adapter);
+
     }
 
     @Override
