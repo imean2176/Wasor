@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Tìm kiếm và sổ giá trị xuống
     SearchableSpinner searchableSpinner;
+    //test
 
     // onCreate sau đó mới đến onStart
     // Tạo màn hình trước (onCreate), rồi sau đó hiển thị màn hình đó (onStart)
