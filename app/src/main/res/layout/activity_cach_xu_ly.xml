@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#404040"
+    tools:context=".CachXuLyActivity">
+    <ImageButton
+        android:layout_margin="@dimen/material_component_floating_action_button_margin"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:background="#404040"
+        android:onClick="onBack"
+        android:id="@+id/btn_backCXL"
+        >
+    </ImageButton>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/material_layout_keylines_screen_edge_margin">
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_image"
+                android:src="@drawable/ic_linked_camera_black_24dp"
+                android:id="@+id/image_rac"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/image_rac"
+                android:layout_height="500dp"
+                android:layout_marginTop="-20dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_description"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTenRac"
+                    android:text="@string/app_name"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_light_white"
+                    android:textSize="@dimen/_17sdp"/>
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtLoaiRac"
+                    android:text="Rác thải nguy hại"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_blue_500"
+                    android:textSize="@dimen/_15sdp"/>
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtMoTaLoaiRac"
+                    android:text="@string/ex2"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_blue_grey_100"
+                    android:textSize="@dimen/_12sdp"/>
+                <TextView
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtCachXuLy"
+                    android:text="Cách xử lý"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_blue_500"
+                    android:textSize="@dimen/_15sdp"/>
+                <TextView
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtMoTaCachXuLy"
+                    android:text="@string/ex1"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/material_blue_grey_100"
+                    android:textSize="@dimen/_12sdp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

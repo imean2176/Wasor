@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         racRef = database.getReference("dsrac");
 
 
-        // Read from the database
+        // Lấy dữ liệu từ Cơ sở dữ liệu
         racRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
