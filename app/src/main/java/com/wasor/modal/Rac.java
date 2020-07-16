@@ -1,10 +1,14 @@
 package com.wasor.modal;
 
-public class Rac {
+import java.io.Serializable;
+
+public class Rac implements Serializable {
     private String tenrac;
     private String loairac;
     private String motaloairac;
     private String cachxuly;
+
+    private String urlImage;
 
     public Rac() {
     }
@@ -37,6 +41,10 @@ public class Rac {
         return cachxuly;
     }
 
+    public String getUrlImage() {
+        return urlImage;
+    }
+
     // Setter Methods
 
     public void setTenrac(String tenrac) {
@@ -53,5 +61,9 @@ public class Rac {
 
     public void setCachxuly(String cachxuly) {
         this.cachxuly = cachxuly;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

@@ -11,10 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.androidnetworking.widget.ANImageView;
 import com.wasor.modal.Rac;
 
 public class CachXuLyActivity extends AppCompatActivity {
-    ImageView imageView;
+    ANImageView imageView;
     ImageButton btnBack;
     TextView txtTenRac;
     TextView txtLoaiRac;
@@ -45,6 +46,10 @@ public class CachXuLyActivity extends AppCompatActivity {
         txtLoaiRac.setText(rac.getLoairac());
         txtMoTaLoaiRac.setText(rac.getMotaloairac());
         txtMoTaCachXuLy.setText(rac.getCachxuly());
+
+        if(!rac.getUrlImage().contains("NONE") || !rac.getUrlImage().isEmpty()){
+            imageView.setImageUrl(rac.getUrlImage());
+        }
     }
 
     //Lấy từng loại giao diện trên màn hình

@@ -12,7 +12,7 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:src="@drawable/ic_arrow_back_black_24dp"
-        android:background="#404040"
+        android:background="@drawable/round_button"
         android:onClick="onBack"
         android:id="@+id/btn_backCXL"
         >
@@ -24,20 +24,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/material_layout_keylines_screen_edge_margin">
-            <ImageView
+            <com.androidnetworking.widget.ANImageView
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
                 android:background="@drawable/round_image"
                 android:src="@drawable/ic_linked_camera_black_24dp"
                 android:id="@+id/image_rac"
-
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@id/image_rac"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="-20dp"
+                android:layout_marginBottom="@dimen/_50sdp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/round_description"
                 android:orientation="vertical"

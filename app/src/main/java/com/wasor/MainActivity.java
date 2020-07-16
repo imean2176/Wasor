@@ -11,17 +11,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.androidnetworking.AndroidNetworking;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jacksonandroidnetworking.JacksonParserFactory;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import com.wasor.interfacee.IFirebaseLoadDone;
 import com.wasor.modal.Rac;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
 
 //Màn hình đầu tiên mà ứng dụng hiện lên
 //Ứng dụng sẽ kiểm tra xem người dùng đã xem Màn hình giới thiệu chưa,
@@ -44,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
     List<Rac> dsRac;
 
+    List<String> nameRac;
+
+    ArrayAdapter<String> adapter;
+
 
     // onCreate sau đó mới đến onStart
     // Tạo màn hình trước (onCreate), rồi sau đó hiển thị màn hình đó (onStart)
@@ -54,25 +63,34 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         sharedPreferences = this.getSharedPreferences("PREF", Context.MODE_PRIVATE);
         iFirebaseLoadDone = this;
 
+        //Kiểm tra kết nối mạng wifi
+        network();
+
+
+        searchableSpinner = findViewById(R.id.searchSpinner);
+        searchableSpinner.setTitle("Nhập tên rác thải");
+        initSearchableSpinner();
 
 
         //Lấy dữ liệu phân loại rác từ firebase
         getDataFirebase();
 
-        searchableSpinner = findViewById(R.id.searchSpinner);
-        searchableSpinner.setTitle("Nhập tên rác thải");
-
-
-
+        searchableSpinner.setSelection(0,false);
         //Cài đặt Khi chọn giá trị trong ô search thì sẽ xảy ra
         searchableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Rac rac = dsRac.get(position);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("rac", rac);
 
                 //Hiển thị màn hình chi tiết loại rác
+                Intent intent = new Intent(getApplicationContext(), CachXuLyActivity.class);
 
-                //Todo
+                intent.putExtra("rac",bundle);
+
+                //Truyền dữ liệu Rác qua màn hình chi tiết rác
+                startActivity(intent);
             }
 
             @Override
@@ -80,6 +98,34 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
                 // Không chọn thì ko có chuyện gì xảy ra hết
             }
         });
+
+
+
+
+    }
+
+    private void network() {
+        AndroidNetworking.initialize(getApplicationContext());
+        // Adding an Network Interceptor for Debugging purpose :
+        OkHttpClient okHttpClient = new OkHttpClient() .newBuilder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
+        AndroidNetworking.initialize(getApplicationContext(),okHttpClient);
+        // Then set the JacksonParserFactory like below
+        AndroidNetworking.setParserFactory(new JacksonParserFactory());
+    }
+
+    private void initSearchableSpinner() {
+        //Lấy toàn bộ tên rác
+        nameRac = new ArrayList<>();
+        dsRac = new ArrayList<>();
+        Rac rac = new Rac("Nhập tên rác thải","Truy xuất thất bại","Loại rác hiện tại ứng dụng chưa hỗ trợ","Vui lòng thử lại với loại rác khác");
+        dsRac.add(rac);
+        nameRac.add(rac.getTenrac());
+
+        //Tạo adapter và cài đặt cho spinner
+        adapter = new ArrayAdapter<>(this,R.layout.search_item, nameRac);
+        searchableSpinner.setAdapter(adapter);
     }
 
     @Override
@@ -116,11 +162,11 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         racRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Rac> racs = new ArrayList<>();
+                dsRac.clear();
                 for(DataSnapshot racSnapshot:dataSnapshot.getChildren()){
-                    racs.add(racSnapshot.getValue(Rac.class));
+                    dsRac.add(racSnapshot.getValue(Rac.class));
                 }
-                iFirebaseLoadDone.onFirebaseLoadSuccess(racs);
+                iFirebaseLoadDone.onFirebaseLoadSuccess(dsRac);
             }
 
             @Override
@@ -136,21 +182,15 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
     public void onFirebaseLoadSuccess(List<Rac> racList) {
 
         //Nếu lấy được danh sách ở firebase thành công thì nhúng data vào ô search khi tìm
-        dsRac = racList;
-
-        //Lấy toàn bộ tên rác
-        List<String> name_rac = new ArrayList<>();
-        String firstItem ="Nhập tên rác thải";
-        name_rac.add(firstItem);
-
-        for(Rac rac: dsRac){
-            name_rac.add(rac.getTenrac());
+        // Nếu danh sách rác đã tồn tại, xóa toàn bộ
+        if (nameRac.size() > 0) {
+            nameRac.clear();
         }
 
-        //Tạo adapter và cài đặt cho spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.search_item,name_rac);
-        searchableSpinner.setAdapter(adapter);
-
+        for(Rac rac: racList){
+            nameRac.add(rac.getTenrac());
+        }
+        adapter.notifyDataSetChanged();
     }
 
     @Override
