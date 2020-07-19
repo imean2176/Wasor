@@ -1,38 +1,33 @@
 package com.wasor;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
-import com.wasor.adapter.EndlessRecyclerViewScrollListener;
 import com.wasor.adapter.RacAdapter;
 import com.wasor.modal.Rac;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
+//Màn hình danh sách rác
 public class DanhSachRacActivity extends AppCompatActivity {
 
+    //Biến để hiển thị danh sách rác
     RecyclerView recyclerView;
     RacAdapter adapter;
     ArrayList<Rac> racs;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_rac);
 
-
+        //Lấy dữ liệu danh sách rác từ hệ thống
         Intent intent = getIntent();
         ArrayList<Rac> dsRac = (ArrayList<Rac>) intent
                 .getSerializableExtra("dsrac");
@@ -41,6 +36,7 @@ public class DanhSachRacActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.list_view_rac);
 
+        //Thêm toàn bộ danh sách rác vào để hiển thị trên ứng dụng
         racs = new ArrayList<Rac>();
         if (dsRac != null) {
             racs.addAll(dsRac);
@@ -57,6 +53,7 @@ public class DanhSachRacActivity extends AppCompatActivity {
 
 
 
+    //Nhấn nút Back
     public void onBack(View view) {
         this.onBackPressed();
         finish();

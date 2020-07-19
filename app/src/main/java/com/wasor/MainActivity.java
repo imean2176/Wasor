@@ -45,12 +45,16 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
     //Biến để lưu dữ liệu người dùng.
     SharedPreferences sharedPreferences;
 
+    //Khởi tạo sự kiện để thể hiện việc nhận giá trị từ server thành công
     IFirebaseLoadDone iFirebaseLoadDone;
 
+    //Danh sách rác sẽ được lưu ở biến này
     List<Rac> dsRac;
 
+    //Danh sách tên rác sẽ được lưu ở biến này
     List<String> nameRac;
 
+    //Biến lưu để chuyển dữ liệu từ server, hiển thị ra app
     ArrayAdapter<String> adapter;
 
 
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         network();
 
 
+        //Khởi tạo thanh tìm kiếm
         searchableSpinner = findViewById(R.id.searchSpinner);
         searchableSpinner.setTitle("Nhập tên rác thải");
         initSearchableSpinner();
@@ -104,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
     }
 
+    //Khởi tạo mạng, giống như kết nối wifi để điện thoại liên lạc được với server
     private void network() {
         AndroidNetworking.initialize(getApplicationContext());
         // Adding an Network Interceptor for Debugging purpose :
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         AndroidNetworking.setParserFactory(new JacksonParserFactory());
     }
 
+    //Khởi tạo thanh tìm kiếm
     private void initSearchableSpinner() {
         //Lấy toàn bộ tên rác
         nameRac = new ArrayList<>();
@@ -128,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         searchableSpinner.setAdapter(adapter);
     }
 
+
+    //Ứng dụng sau khi được tạo, sẽ chạy chức năng này.
     @Override
     public void onStart() {
         super.onStart();
@@ -178,6 +187,8 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         });
     }
 
+
+    //Lấy dữ liệu từ hệ thống thành công
     @Override
     public void onFirebaseLoadSuccess(List<Rac> racList) {
 
@@ -198,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
     }
 
+    //Hiển thị danh sách rác
     public void showDanhSach(View view) {
 
         //Hiển thị màn hình chi tiết loại rác

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.androidnetworking.widget.ANImageView;
 import com.wasor.modal.Rac;
 
+//Màn hình chi tiết và cách xử lý của một rác thải bất kỳ
 public class CachXuLyActivity extends AppCompatActivity {
     ANImageView imageView;
     ImageButton btnBack;
@@ -31,6 +32,7 @@ public class CachXuLyActivity extends AppCompatActivity {
 
         findID();
 
+        //Lấy dữ liệu cần hiển thị cách xử lý của rác nào
         Bundle bundle = getIntent().getBundleExtra("rac");
 
         if(bundle!=null){

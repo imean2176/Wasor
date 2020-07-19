@@ -2,6 +2,8 @@ package com.wasor.modal;
 
 import java.io.Serializable;
 
+
+//Rác được thẻ hiện gồm những trường dữ liệu nào
 public class Rac implements Serializable {
     private String tenrac;
     private String loairac;
