@@ -22,6 +22,7 @@ public class Rac implements Serializable {
         this.loairac = loairac;
         this.motaloairac = motaloairac;
         this.cachxuly = cachxuly;
+        this.urlImage = ("NONE");
     }
 // Getter Methods
 

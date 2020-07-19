@@ -110,6 +110,7 @@
                         android:layout_gravity="center"
                         android:background="@color/transparent_image"
                         android:scaleType="fitCenter"
+                        android:onClick="showDanhSach"
                         >
                     </ImageButton>
                     <TextView

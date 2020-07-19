@@ -197,4 +197,19 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
     public void onFirebaseLoadFailed(String message) {
 
     }
+
+    public void showDanhSach(View view) {
+
+        //Hiển thị màn hình chi tiết loại rác
+        Intent intent = new Intent(getApplicationContext(), DanhSachRacActivity.class);
+
+        ArrayList<Rac> list1 = new ArrayList<>(dsRac);
+        intent.putExtra("dsrac",list1);
+
+        ArrayList<String> list2 = new ArrayList<>(nameRac);
+        intent.putExtra("namerac",list2);
+
+        //Truyền dữ liệu Rác qua màn hình chi tiết rác
+        startActivity(intent);
+    }
 }
