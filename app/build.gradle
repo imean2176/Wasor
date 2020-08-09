@@ -48,6 +48,18 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.android.support:design:26.1.0'
 
-    //Camera
+    //Camera & Image uploading
+    /*retrofit lib for http calls*/
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup:otto:1.3.8'
+    implementation 'com.squareup.okhttp3:okhttp:3.7.0'
+    //https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //https://github.com/ReactiveX/RxAndroid
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.0'
+    implementation 'com.yalantis:ucrop:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
 }

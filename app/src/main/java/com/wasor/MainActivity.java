@@ -228,7 +228,17 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
     }
 
     public void showCamera(View view) {
+        //Hiển thị màn hình Camera
+        Intent intent = new Intent(getApplicationContext(), ClassifyActivity.class);
 
+        ArrayList<Rac> list1 = new ArrayList<>(dsRac);
+        intent.putExtra("dsrac",list1);
+
+        ArrayList<String> list2 = new ArrayList<>(nameRac);
+        intent.putExtra("namerac",list2);
+
+        //Truyền dữ liệu Rác qua màn hình chi tiết rác
+        startActivity(intent);
 
     }
 }
