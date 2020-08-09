@@ -165,6 +165,8 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
         //Lấy danh sách rác từ key dsrac trên firebase
         racRef = database.getReference("dsrac");
+        //Lưu offline, nếu
+        racRef.keepSynced(true);
 
 
         // Lấy dữ liệu từ Cơ sở dữ liệu
@@ -223,5 +225,10 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
 
         //Truyền dữ liệu Rác qua màn hình chi tiết rác
         startActivity(intent);
+    }
+
+    public void showCamera(View view) {
+
+
     }
 }
