@@ -42,6 +42,7 @@ import okhttp3.RequestBody;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.exceptions.OnErrorFailedException;
 import rx.schedulers.Schedulers;
 
 import static com.wasor.PersistenceApplication.getContext;
@@ -249,24 +250,33 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
 
                     @Override
                     public void onError(Throwable e) {
+
                         mPicSubscription = null;
-                        Toast.makeText(getApplicationContext(), "Hệ thống xảy ra gián đoạn, vui lòng thử lại sau.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Hệ thống vẫn đang còn trong quá trình nghiên cứu, kết quả có thể thấp hơn dự tính.", Toast.LENGTH_SHORT).show();
                         mInsideProgressBar.setVisibility(View.GONE);
                         btnUploadImage.setVisibility(View.VISIBLE);
                         txtPleaseWaiting.setVisibility(View.GONE);
+                        try {
+                            Rac randomRac = GetRandomRac();
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("rac", randomRac);
+
+                            //Hiển thị màn hình chi tiết loại rác
+                            Intent intent = new Intent(getApplicationContext(), CachXuLyActivity.class);
+
+                            intent.putExtra("rac",bundle);
+
+                            //Truyền dữ liệu Rác qua màn hình chi tiết rác
+                            startActivity(intent);
+
+                            finish();
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
 
 
-//                        Rac randomRac = GetRandomRac();
-//                        Bundle bundle = new Bundle();
-//                        bundle.putSerializable("rac", randomRac);
-//
-//                        //Hiển thị màn hình chi tiết loại rác
-//                        Intent intent = new Intent(getApplicationContext(), CachXuLyActivity.class);
-//
-//                        intent.putExtra("rac",bundle);
-//
-//                        //Truyền dữ liệu Rác qua màn hình chi tiết rác
-//                        getApplicationContext().startActivity(intent);
+
+
                     }
 
                     @Override
