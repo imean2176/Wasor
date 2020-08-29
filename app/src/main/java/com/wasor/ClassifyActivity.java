@@ -279,10 +279,6 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
-
-
-
-
                     }
 
                     @Override
