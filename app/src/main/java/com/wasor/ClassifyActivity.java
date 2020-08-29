@@ -263,9 +263,9 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
                         btnUploadImage.setVisibility(View.VISIBLE);
                         txtPleaseWaiting.setVisibility(View.GONE);
                         try {
-                            Rac randomRac = GetRandomRac();
+                            Rac rac = new Rac("Phân loại thất bại","Dữ liệu phức tạp","Ứng dụng chưa nhận diện được loại rác bạn yêu cầu phân loại","Vui lòng thử lại với loại rác khác");
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("rac", randomRac);
+                            bundle.putSerializable("rac", rac);
 
                             //Hiển thị màn hình chi tiết loại rác
                             Intent intent = new Intent(getApplicationContext(), CachXuLyActivity.class);
