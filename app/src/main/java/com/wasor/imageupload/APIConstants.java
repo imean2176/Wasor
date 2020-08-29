@@ -4,6 +4,6 @@ package com.wasor.imageupload;
 public interface APIConstants {
 
     //Server Url
-    String SERVER_URL = "http://52.220.190.223:3027/api/";
-    String IMAGE_UPLOAD_URL = SERVER_URL + "containers/identificationImages/upload";
+    String SERVER_URL = "http://18.188.17.112:5000/";
+    String IMAGE_UPLOAD_URL = SERVER_URL;// + "containers/identificationImages/upload";
 }

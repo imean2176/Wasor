@@ -148,7 +148,7 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
     public void uploadPickedImage(File file) {
         mImageFile = file;
         showImagePicked(mImageFile);
-        uploadPhotoToServer(mImageFile, "images");
+        uploadPhotoToServer(mImageFile, "image");
     }
 
     private void showImagePicked(File mImageFile) {
@@ -229,11 +229,16 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
 
 
     private void uploadPhotoToServer(File mImageFile, String imageType) {
+
+        //Cập nhật UI
         mInsideProgressBar.setVisibility(View.VISIBLE);
         btnUploadImage.setVisibility(View.GONE);
         txtPleaseWaiting.setVisibility(View.VISIBLE);
+
+        //Gửi yêu cầu nhận diện ảnh lên server
         MultipartBody.Part filePart = MultipartBody.Part.createFormData(imageType,
                 mImageFile.getName(), RequestBody.create(MediaType.parse("image/*"), mImageFile));
+
         APIServices service = ServiceFactory.createRetrofitService(APIServices.class);
         mPicSubscription = service.uploadPhoto(APIConstants.IMAGE_UPLOAD_URL,
                 filePart)
@@ -242,10 +247,11 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
                 .subscribe(new Subscriber<ImageUploadResponse>() {
                     @Override
                     public void onCompleted() {
-                        mPicSubscription = null;
-                        mInsideProgressBar.setVisibility(View.GONE);
-                        btnUploadImage.setVisibility(View.VISIBLE);
-                        txtPleaseWaiting.setVisibility(View.GONE);
+//                        mPicSubscription = null;
+//
+//                        mInsideProgressBar.setVisibility(View.GONE);
+//                        btnUploadImage.setVisibility(View.VISIBLE);
+//                        txtPleaseWaiting.setVisibility(View.GONE);
                     }
 
                     @Override
@@ -281,15 +287,34 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
 
                     @Override
                     public void onNext(ImageUploadResponse imageResultModel) {
-                        mInsideProgressBar.setVisibility(View.GONE);
-                        btnUploadImage.setVisibility(View.VISIBLE);
-                        txtPleaseWaiting.setVisibility(View.GONE);
-                        String imageUrl = imageResultModel.getResult().getImage();
-                        Picasso.with(ClassifyActivity.this).load(APIConstants.SERVER_URL + "containers/identificationImages/download/" + imageUrl)
-                                .fit().centerCrop().into(mImageView);
 
-                        Log.d("UPLOADED_IMAGE", imageUrl);
-                        Toast.makeText(getApplicationContext(), "Tải lên hoàn tất", Toast.LENGTH_SHORT).show();
+//                        String imageUrl = imageResultModel.getResult().getImage();
+//                        Picasso.with(ClassifyActivity.this).load(APIConstants.SERVER_URL + "containers/identificationImages/download/" + imageUrl)
+//                                .fit().centerCrop().into(mImageView);
+
+                        Log.d("UPLOADED_IMAGE", imageResultModel.getLabel());
+                        Toast.makeText(getApplicationContext(), "Hoàn tất phân loại", Toast.LENGTH_SHORT).show();
+
+                        Rac item = findItem(imageResultModel.getLabel());
+                        Bundle bundle = new Bundle();
+
+
+                        if(item == null){
+                            Rac rac = new Rac("Phân loại thất bại","Dữ liệu phức tạp","Ứng dụng chưa nhận diện được loại rác bạn yêu cầu phân loại","Vui lòng thử lại với loại rác khác");
+                            bundle.putSerializable("rac", rac);
+                        }else{
+                            bundle.putSerializable("rac", item);
+                        }
+
+                        //Hiển thị màn hình chi tiết loại rác
+                        Intent intent = new Intent(getApplicationContext(), CachXuLyActivity.class);
+
+                        intent.putExtra("rac",bundle);
+
+                        //Truyền dữ liệu Rác qua màn hình chi tiết rác
+                        startActivity(intent);
+
+                        finish();
                     }
                 });
 
@@ -300,6 +325,17 @@ public class ClassifyActivity extends AppCompatActivity implements PickImageDial
         int position = rd.nextInt(racs.size());
         Rac rac = racs.get(position);
         return rac;
+    }
+
+    private Rac findItem(String tenRac){
+        int size = racs.size();
+        for(int i = 0;i<size;i++){
+            Rac rac = racs.get(i);
+            if(rac.getTenrac().equals(tenRac)){
+                return rac;
+            }
+        }
+        return null;
     }
 
     @Override

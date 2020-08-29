@@ -1,15 +1,27 @@
 package com.wasor;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -20,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jacksonandroidnetworking.JacksonParserFactory;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+import com.wasor.imageupload.MyReceiver;
 import com.wasor.interfacee.IFirebaseLoadDone;
 import com.wasor.modal.Rac;
 
@@ -228,6 +241,13 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
     }
 
     public void showCamera(View view) {
+
+        if (!isConnected()) {
+            Toast.makeText(getApplicationContext(), "Không có kết nối internet, bạn vui lòng kiểm tra lại wifi/ 4G trên điện thoại", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
         //Hiển thị màn hình Camera
         Intent intent = new Intent(getApplicationContext(), ClassifyActivity.class);
 
@@ -241,4 +261,35 @@ public class MainActivity extends AppCompatActivity implements IFirebaseLoadDone
         startActivity(intent);
 
     }
+
+    public boolean isConnected() {
+        boolean result = false;
+        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (cm != null) {
+                NetworkCapabilities capabilities = cm.getNetworkCapabilities(cm.getActiveNetwork());
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        result = true;
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        result = true;
+                    }
+                }
+            }
+        } else {
+            if (cm != null) {
+                NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+                if (activeNetwork != null) {
+                    // connected to the internet
+                    if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                        result = true;
+                    } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                        result = true;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
 }
