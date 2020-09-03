@@ -2,12 +2,15 @@ package com.wasor.imageupload;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
@@ -92,9 +95,12 @@ public class PickImageDialog {
     private File file;
     private Uri photoUri = null;
 
+
+
     private Uri createImageFile(boolean isGaleeryPic) {
         try {
             File filepath = Environment.getExternalStorageDirectory();
+
             File dir = new File(filepath.getAbsolutePath());
 
             File dataFolder;
@@ -108,18 +114,29 @@ public class PickImageDialog {
                     dataFolder.mkdir();
                 }
             } else {
-                File androidFolder = new File(dir, "Android");
-                if (!androidFolder.exists()) {
-                    androidFolder.mkdir();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+                    filepath = mActivity.getExternalFilesDir(null);
+                    dataFolder = new File(filepath.getAbsolutePath());
+
+                }else{
+                    File androidFolder = new File(dir, "Android");
+                    if (!androidFolder.exists()) {
+                        androidFolder.mkdir();
+                    }
+                    File dFolder = new File(androidFolder, "data");
+                    if (!dFolder.exists()) {
+                        dFolder.mkdir();
+                    }
+                    dataFolder = new File(dFolder, "com.wasor");
+                    if (!dataFolder.exists()) {
+                        dataFolder.mkdir();
+                    }
+                    if (!dataFolder.exists()) {
+                        dataFolder.mkdir();
+                    }
                 }
-                File dFolder = new File(androidFolder, "data");
-                if (!dFolder.exists()) {
-                    dFolder.mkdir();
-                }
-                dataFolder = new File(dFolder, "com.wasor");
-                if (!dataFolder.exists()) {
-                    dataFolder.mkdir();
-                }
+
             }
 
             Calendar cal = Calendar.getInstance();
